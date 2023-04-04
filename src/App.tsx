@@ -7,22 +7,16 @@ import {
   AlertDialogOverlay,
   Button,
   ButtonGroup,
-  Checkbox,
   Container,
-  FormControl,
-  FormLabel,
-  Input as ChakraInput,
-  NumberInput,
-  NumberInputField,
-  Select,
   useDisclosure,
   VStack,
 } from "@chakra-ui/react";
 import axios from "axios";
-import { Field, Form, Formik } from "formik";
+import { Form, Formik } from "formik";
 import React, { useRef, useState } from "react";
+import { CheckBox, ChoiceField, NumberField, TextField } from "./Components";
 import { FRAUDULENT_EXAMPLES, LEGIT_EXAMPLES } from "./examples";
-import { Input, convert, TrueInput, cat_column_options } from "./types";
+import { cat_column_options, convert, Input, TrueInput } from "./types";
 
 const API_URL = "YOUR_API_URL_HERE";
 
@@ -176,67 +170,6 @@ const App: React.FC = () => {
     </>
   );
 };
-
-function CheckBox({ name }: { name: string }) {
-  return (
-    <FormControl display="flex" alignItems="center">
-      <FormLabel htmlFor={name} mb="0">
-        {name}
-      </FormLabel>
-      <Field name={name}>
-        {({ field, form }: any) => (
-          <Checkbox
-            {...field}
-            isChecked={field.value}
-            onChange={(e) => form.setFieldValue(field.name, e.target.checked)}
-          />
-        )}
-      </Field>
-    </FormControl>
-  );
-}
-
-function TextField({ name }: { name: string }) {
-  return (
-    <FormControl id={name}>
-      <FormLabel>{name}</FormLabel>
-      <Field as={ChakraInput} id={name} name={name} type="text" />
-    </FormControl>
-  );
-}
-
-function NumberField({ name }: { name: string }) {
-  return (
-    <FormControl id={name}>
-      <FormLabel>{name}</FormLabel>
-      <Field name={name}>
-        {({ field, form }: any) => (
-          <NumberInput
-            value={field.value}
-            onChange={(value) => form.setFieldValue(field.name, value)}
-          >
-            <NumberInputField />
-          </NumberInput>
-        )}
-      </Field>
-    </FormControl>
-  );
-}
-
-function ChoiceField({ name, choices }: { name: string; choices: string[] }) {
-  return (
-    <FormControl id={name}>
-      <FormLabel htmlFor={name}>{name}:</FormLabel>
-      <Field as={Select} id={name} name={name}>
-        {choices.map((choice) => (
-          <option key={choice} value={choice}>
-            {choice}
-          </option>
-        ))}
-      </Field>
-    </FormControl>
-  );
-}
 
 export default App;
 
