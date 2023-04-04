@@ -6,8 +6,9 @@ import {
   AlertDialogHeader,
   AlertDialogOverlay,
   Button,
-  ButtonGroup,
   Container,
+  Flex,
+  useBreakpointValue,
   useDisclosure,
   VStack,
 } from "@chakra-ui/react";
@@ -31,6 +32,12 @@ const getRandomExample = (
 
 const App: React.FC = () => {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const buttonGroupDirection = useBreakpointValue<"column" | "row" | undefined>(
+    {
+      base: "column",
+      md: "row",
+    }
+  );
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [loading, setLoading] = useState(false);
   const [dialogMessage, setDialogMessage] = useState("");
@@ -56,19 +63,31 @@ const App: React.FC = () => {
         {({ setValues }) => (
           <>
             <Container
-              maxW="container.md"
+              maxW="container.lg"
               p={{ base: 4, md: 8 }}
               mt={{ base: 8, md: 16 }}
             >
               <VStack spacing={6}>
-                <ButtonGroup>
+                <Flex direction={buttonGroupDirection} gap={4}>
                   <Button
                     colorScheme="teal"
+                    onClick={() =>
+                      getRandomExample(
+                        [...FRAUDULENT_EXAMPLES, ...LEGIT_EXAMPLES],
+                        setValues
+                      )
+                    }
+                  >
+                    Random Example
+                  </Button>
+
+                  <Button
+                    colorScheme="red"
                     onClick={() =>
                       getRandomExample(FRAUDULENT_EXAMPLES, setValues)
                     }
                   >
-                    Random Fraudulent Example
+                    Random Fraud Example
                   </Button>
 
                   <Button
@@ -77,15 +96,15 @@ const App: React.FC = () => {
                   >
                     Random Legit Example
                   </Button>
-                </ButtonGroup>
+                </Flex>
 
-                <Form>
+                <Form style={{ width: "100%" }}>
                   <Container
                     maxW="container.md"
                     p={{ base: 4, md: 8 }}
                     mt={{ base: 8, md: 16 }}
                   >
-                    <VStack spacing={4}>
+                    <VStack spacing={4} maxW="container.lg">
                       <>
                         {[
                           "title",
