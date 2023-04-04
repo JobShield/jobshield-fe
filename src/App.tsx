@@ -9,7 +9,7 @@ const App: React.FC = () => {
   const handleSubmit = async (values: Partial<Input>) => {
     const res: TrueInput = convert(values);
     try {
-      const response = await axios.get(API_URL, { data: values });
+      const response = await axios.post(API_URL, { data: res });
       if (response.data) {
         // Show success message
         alert("Success: " + response.data);

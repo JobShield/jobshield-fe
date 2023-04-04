@@ -237,8 +237,7 @@ export interface TrueInput {
   description: string;
   requirements: string;
   benefits: string;
-  salary_lower: number | "-";
-  salary_upper: number | "-";
+  salary_range: string;
   telecommuting: 0 | 1;
   has_company_logo: 1 | 0;
   has_questions: 0 | 1;
@@ -456,10 +455,13 @@ export function convert(partialInput: Partial<Input>): TrueInput {
     description: partialInput.description || "-",
     requirements: partialInput.requirements || "-",
     benefits: partialInput.benefits || "-",
-    salary_lower:
-      partialInput.salary_lower !== undefined ? partialInput.salary_lower : "-",
-    salary_upper:
-      partialInput.salary_upper !== undefined ? partialInput.salary_upper : "-",
+    salary_range:
+      partialInput.salary_lower !== undefined &&
+      partialInput.salary_upper !== undefined
+        ? partialInput.salary_lower.toString() +
+          "-" +
+          partialInput.salary_upper.toString()
+        : "0-0",
     telecommuting: partialInput.telecommuting ? 1 : 0,
     has_company_logo: partialInput.has_company_logo ? 1 : 0,
     has_questions: partialInput.has_questions ? 1 : 0,
@@ -470,3 +472,23 @@ export function convert(partialInput: Partial<Input>): TrueInput {
     function: partialInput.function || "-",
   } as TrueInput;
 }
+
+const sample: Partial<Input> = {
+  title: "title",
+  location: "Mars",
+  department: "Aviation",
+  company_profile: "Boring",
+  description: "babababbabababab abbababababa.",
+  requirements: "errrr",
+  benefits: "free food",
+  salary_lower: 90,
+  salary_upper: undefined,
+  telecommuting: true,
+  has_company_logo: true,
+  has_questions: true,
+  employment_type: "Other",
+  required_experience: "Internship",
+  required_education: "Bachelor's Degree",
+  industry: "Marketing and Advertising",
+  function: "Marketing",
+};
