@@ -1,3 +1,14 @@
+import {
+  Button,
+  Checkbox,
+  FormControl,
+  FormLabel,
+  Input as ChakraInput,
+  NumberInput,
+  NumberInputField,
+  Select,
+  VStack,
+} from "@chakra-ui/react";
 import axios from "axios";
 import { Field, Form, Formik } from "formik";
 import React from "react";
@@ -27,47 +38,51 @@ const App: React.FC = () => {
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
       {() => (
         <Form>
-          <>
-            {[
-              "title",
-              "location",
-              "department",
-              "company_profile",
-              "description",
-              "requirements",
-              "benefits",
-            ].map((name) => (
-              <TextField key={name} name={name} />
-            ))}
-          </>
+          <VStack spacing={4}>
+            <>
+              {[
+                "title",
+                "location",
+                "department",
+                "company_profile",
+                "description",
+                "requirements",
+                "benefits",
+              ].map((name) => (
+                <TextField key={name} name={name} />
+              ))}
+            </>
 
-          <>
-            {["salary_lower", "salary_upper"].map((name) => (
-              <NumberField key={name} name={name} />
-            ))}
-          </>
+            <>
+              {["salary_lower", "salary_upper"].map((name) => (
+                <NumberField key={name} name={name} />
+              ))}
+            </>
 
-          <>
-            {["telecommuting", "has_company_logo", "has_questions"].map(
-              (name) => (
-                <CheckBox key={name} name={name} />
-              )
-            )}
-          </>
+            <>
+              {["telecommuting", "has_company_logo", "has_questions"].map(
+                (name) => (
+                  <CheckBox key={name} name={name} />
+                )
+              )}
+            </>
 
-          <>
-            {Object.entries(cat_column_options).map(
-              ([categoryName, choices]) => (
-                <ChoiceField
-                  key={categoryName}
-                  name={categoryName}
-                  choices={choices}
-                />
-              )
-            )}
-          </>
+            <>
+              {Object.entries(cat_column_options).map(
+                ([categoryName, choices]) => (
+                  <ChoiceField
+                    key={categoryName}
+                    name={categoryName}
+                    choices={choices}
+                  />
+                )
+              )}
+            </>
 
-          <button type="submit">Submit</button>
+            <Button type="submit" colorScheme="blue">
+              Submit
+            </Button>
+          </VStack>
         </Form>
       )}
     </Formik>
@@ -76,72 +91,65 @@ const App: React.FC = () => {
 
 function CheckBox({ name }: { name: string }) {
   return (
-    <>
-      <label>{name}</label>
-      <Field
-        id={name}
-        name={name}
-        type="checkbox"
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          e.target.checked ? 1 : 0
-        }
-      />
-    </>
+    <FormControl display="flex" alignItems="center">
+      <FormLabel htmlFor={name} mb="0">
+        {name}
+      </FormLabel>
+      <Field name={name}>
+        {({ field, form }: any) => (
+          <Checkbox
+            {...field}
+            isChecked={field.value}
+            onChange={(e) => form.setFieldValue(field.name, e.target.checked)}
+          />
+        )}
+      </Field>
+    </FormControl>
   );
 }
 
 function TextField({ name }: { name: string }) {
   return (
-    <>
-      <label>{name}</label>
-      <Field id={name} name={name} type="text" />
-    </>
+    <FormControl id={name}>
+      <FormLabel>{name}</FormLabel>
+      <Field as={ChakraInput} id={name} name={name} type="text" />
+    </FormControl>
   );
 }
 
 function NumberField({ name }: { name: string }) {
   return (
-    <>
-      <label>{name}</label>
-      <Field id={name} name={name} type="number" />
-    </>
+    <FormControl id={name}>
+      <FormLabel>{name}</FormLabel>
+      <Field name={name}>
+        {({ field, form }: any) => (
+          <NumberInput
+            value={field.value}
+            onChange={(value) => form.setFieldValue(field.name, value)}
+          >
+            <NumberInputField />
+          </NumberInput>
+        )}
+      </Field>
+    </FormControl>
   );
 }
 
 function ChoiceField({ name, choices }: { name: string; choices: string[] }) {
   return (
-    <>
-      <label htmlFor={name}>{name}:</label>
-      <Field as="select" id={name} name={name}>
+    <FormControl id={name}>
+      <FormLabel htmlFor={name}>{name}:</FormLabel>
+      <Field as={Select} id={name} name={name}>
         {choices.map((choice) => (
           <option key={choice} value={choice}>
             {choice}
           </option>
         ))}
       </Field>
-    </>
+    </FormControl>
   );
 }
 
 export default App;
 
 const initialValues: Partial<Input> = {};
-const sample: Partial<Input> = {
-  title: "title",
-  location: "Mars",
-  department: "Aviation",
-  company_profile: "Boring",
-  description: "babababbabababab abbababababa.",
-  requirements: "errrr",
-  benefits: "free food",
-  salary_lower: 90,
-  salary_upper: undefined,
-  telecommuting: true,
-  has_company_logo: true,
-  has_questions: true,
-  employment_type: "Other",
-  required_experience: "Internship",
-  required_education: "Bachelor's Degree",
-  industry: "Marketing and Advertising",
-  function: "Marketing",
-};
