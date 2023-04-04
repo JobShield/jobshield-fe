@@ -6,6 +6,7 @@ import {
   AlertDialogHeader,
   AlertDialogOverlay,
   Button,
+  ButtonGroup,
   Checkbox,
   Container,
   FormControl,
@@ -20,9 +21,19 @@ import {
 import axios from "axios";
 import { Field, Form, Formik } from "formik";
 import React, { useRef, useState } from "react";
-import { cat_column_options, convert, Input, TrueInput } from "./types";
+import { FRAUDULENT_EXAMPLES, LEGIT_EXAMPLES } from "./examples";
+import { Input, convert, TrueInput, cat_column_options } from "./types";
 
 const API_URL = "YOUR_API_URL_HERE";
+
+const getRandomExample = (
+  examples: Partial<Input>[],
+  setValues: (values: Partial<Input>) => void
+) => {
+  const randomIndex = Math.floor(Math.random() * examples.length);
+  const randomExample = examples[randomIndex];
+  setValues(randomExample);
+};
 
 const App: React.FC = () => {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
@@ -36,15 +47,9 @@ const App: React.FC = () => {
     const res: TrueInput = convert(values);
     try {
       const response = await axios.post(API_URL, { data: res });
-      if (response.data) {
-        // Show success message
-        setDialogMessage("Success");
-      } else {
-        // Show error message
-        setDialogMessage("Error");
-      }
+      // TODO: Show Legit / Fraud here.
+      setDialogMessage("Success");
     } catch (error: any) {
-      // Show error message
       setDialogMessage("Error: " + error.message);
     } finally {
       setLoading(false);
@@ -54,60 +59,90 @@ const App: React.FC = () => {
   return (
     <>
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-        {() => (
-          <Form>
+        {({ setValues }) => (
+          <>
             <Container
               maxW="container.md"
               p={{ base: 4, md: 8 }}
               mt={{ base: 8, md: 16 }}
             >
-              <VStack spacing={4}>
-                <>
-                  {[
-                    "title",
-                    "location",
-                    "department",
-                    "company_profile",
-                    "description",
-                    "requirements",
-                    "benefits",
-                  ].map((name) => (
-                    <TextField key={name} name={name} />
-                  ))}
-                </>
+              <VStack spacing={6}>
+                <ButtonGroup>
+                  <Button
+                    colorScheme="teal"
+                    onClick={() =>
+                      getRandomExample(FRAUDULENT_EXAMPLES, setValues)
+                    }
+                  >
+                    Random Fraudulent Example
+                  </Button>
 
-                <>
-                  {["salary_lower", "salary_upper"].map((name) => (
-                    <NumberField key={name} name={name} />
-                  ))}
-                </>
+                  <Button
+                    colorScheme="green"
+                    onClick={() => getRandomExample(LEGIT_EXAMPLES, setValues)}
+                  >
+                    Random Legit Example
+                  </Button>
+                </ButtonGroup>
 
-                <>
-                  {["telecommuting", "has_company_logo", "has_questions"].map(
-                    (name) => (
-                      <CheckBox key={name} name={name} />
-                    )
-                  )}
-                </>
+                <Form>
+                  <Container
+                    maxW="container.md"
+                    p={{ base: 4, md: 8 }}
+                    mt={{ base: 8, md: 16 }}
+                  >
+                    <VStack spacing={4}>
+                      <>
+                        {[
+                          "title",
+                          "location",
+                          "department",
+                          "company_profile",
+                          "description",
+                          "requirements",
+                          "benefits",
+                        ].map((name) => (
+                          <TextField key={name} name={name} />
+                        ))}
+                      </>
 
-                <>
-                  {Object.entries(cat_column_options).map(
-                    ([categoryName, choices]) => (
-                      <ChoiceField
-                        key={categoryName}
-                        name={categoryName}
-                        choices={choices}
-                      />
-                    )
-                  )}
-                </>
+                      <>
+                        {["salary_lower", "salary_upper"].map((name) => (
+                          <NumberField key={name} name={name} />
+                        ))}
+                      </>
 
-                <Button type="submit" colorScheme="blue">
-                  Submit
-                </Button>
+                      <>
+                        {[
+                          "telecommuting",
+                          "has_company_logo",
+                          "has_questions",
+                        ].map((name) => (
+                          <CheckBox key={name} name={name} />
+                        ))}
+                      </>
+
+                      <>
+                        {Object.entries(cat_column_options).map(
+                          ([categoryName, choices]) => (
+                            <ChoiceField
+                              key={categoryName}
+                              name={categoryName}
+                              choices={choices}
+                            />
+                          )
+                        )}
+                      </>
+
+                      <Button type="submit" colorScheme="blue">
+                        Submit
+                      </Button>
+                    </VStack>
+                  </Container>
+                </Form>
               </VStack>
             </Container>
-          </Form>
+          </>
         )}
       </Formik>
 
