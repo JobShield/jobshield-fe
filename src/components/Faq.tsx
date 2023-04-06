@@ -64,7 +64,7 @@ const FAQ: React.FC = () => {
           limitations, the quality of the training data, or the complexity of
           the problem itself.
         </FaqItem>
-        // TODO: Fill in
+        {/* TODO: Fill in */}
         <FaqItem question="What are the precision, recall, and f1 scores of your model?">
           The precision, recall, and f1 scores are metrics used to evaluate the
           performance of a machine learning model in classification tasks such

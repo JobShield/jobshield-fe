@@ -2,9 +2,7 @@ import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Button, Flex, Heading, Text, VStack } from "@chakra-ui/react";
 import React from "react";
 
-// TODO:
-const backgroundImage =
-  "https://your-image-url.com/path-to-your-background-image.jpg";
+const backgroundImage = "/background.png";
 
 const Landing: React.FC = () => {
   return (
@@ -13,10 +11,10 @@ const Landing: React.FC = () => {
       alignItems="center"
       justifyContent="center"
       bg="orange.400"
-      // bgImage={`url(${backgroundImage})`}
-      // bgPosition="center"
-      // bgSize="cover"
-      // bgRepeat="no-repeat"
+      bgImage={`url(${backgroundImage})`}
+      bgPosition="center"
+      bgSize="cover"
+      bgRepeat="no-repeat"
     >
       <VStack spacing={6}>
         <Heading as="h1" size="4xl" color="white">
@@ -28,8 +26,9 @@ const Landing: React.FC = () => {
         </Text>
         <Button
           rightIcon={<ChevronDownIcon />}
-          colorScheme="teal"
-          variant="outline"
+          textColor="black"
+          bg={"white"}
+          variant="solid"
           onClick={() => {
             const demoElement = document.getElementById("demo");
             if (demoElement) {
