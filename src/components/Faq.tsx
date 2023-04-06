@@ -29,13 +29,14 @@ const FAQ: React.FC = () => {
         </FaqItem>
         <FaqItem question="What is the EMSCAD and how was it made?">
           The EMSCAD, or Employment Scam Agean Dataset, is a collection of job
-          advertisements used to identify fraudulent job postings. It consists
-          of both legitimate and fraudulent job entries, with the latter being
-          predominantly online recruitment scams. The dataset was created by
-          collecting job advertisements from various online sources and manually
-          annotating them as either legitimate or fraudulent. This manual
-          annotation process involved researchers carefully examining each job
-          entry to determine its authenticity.
+          advertisements collected by the Agean University to better identify
+          fraudulent job postings. It consists of both legitimate and fraudulent
+          job entries, with the latter being predominantly online recruitment
+          scams. The dataset was created by collecting job advertisements from
+          various online sources and manually annotating them as either
+          legitimate or fraudulent. This manual annotation process involved
+          researchers carefully examining each job entry to determine its
+          authenticity.
         </FaqItem>
         <FaqItem question="What does it mean to have a machine learning model trained on EMSCAD?">
           A machine learning model trained on EMSCAD has learned to identify
