@@ -38,7 +38,7 @@ const FaqItem: React.FC<FaqItemProps> = ({ question, children }) => {
         />
       </Flex>
       <Collapse in={isOpen}>
-        <Box p={4} pl={8} pt={2} fontSize="sm">
+        <Box p={4} pl={8} pt={2} fontSize="sm" maxW={"90vw"}>
           {children}
         </Box>
       </Collapse>

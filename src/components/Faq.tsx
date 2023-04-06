@@ -4,9 +4,17 @@ import FaqItem from "./FaqItem";
 
 const FAQ: React.FC = () => {
   return (
-    <Container p={{ base: 4, md: 8 }} mt={{ base: 8, md: 16 }}>
+    <Container
+      p={{ base: 4, md: 8 }}
+      mt={{ base: 8, md: 16 }}
+      bg="orange.300"
+      minW={"100vw"}
+      minH={"100vh"}
+    >
       <VStack spacing={4}>
-        <Heading mb={4}>Frequently Asked Questions</Heading>
+        <Heading mt={4} mb={4}>
+          Frequently Asked Questions
+        </Heading>
         <FaqItem question="What is online recruitment fraud and why does it matter?">
           Online recruitment fraud refers to scams where individuals or
           organizations create fake job advertisements, impersonate real
