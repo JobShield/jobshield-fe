@@ -5,6 +5,7 @@ import DemoForm from "./components/DemoForm";
 import FAQ from "./components/Faq";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import Landing from "./components/Landing";
 import MLResultDialog from "./components/MLResultDialog";
 import { Input, TrueInput, convert } from "./types";
 
@@ -43,7 +44,9 @@ const App: React.FC = () => {
     <VStack minH="100vh" spacing={0}>
       <Header />
       <Box as="main" flexGrow={1} overflow="auto" minW="full">
-        <Box id="landing" minH="100vh"></Box>
+        <Box id="landing" minH="100vh">
+          <Landing />
+        </Box>
         <Box id="demo" minH="100vh">
           <DemoForm handleSubmit={handleSubmit} />
         </Box>
