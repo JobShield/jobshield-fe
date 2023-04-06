@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { useRef } from "react";
 
-export function MLResultDialog({
+export default function MLResultDialog({
   isOpen,
   onClose,
   loading,

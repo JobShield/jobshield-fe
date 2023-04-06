@@ -6,13 +6,13 @@ import {
 } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import { cat_column_options, Input } from "../types";
-import { CheckBox } from "./CheckBox";
-import { ChoiceField } from "./ChoiceField";
-import { NumberField } from "./NumberField";
-import { RandomExampleButtons } from "./RandomExampleButtons";
-import { TextField } from "./TextField";
+import CheckBox from "./CheckBox";
+import ChoiceField from "./ChoiceField";
+import NumberField from "./NumberField";
+import RandomExampleButtons from "./RandomExampleButtons";
+import TextField from "./TextField";
 
-export function DemoForm({
+export default function DemoForm({
   handleSubmit,
 }: {
   handleSubmit: (values: Partial<Input>) => Promise<void>;

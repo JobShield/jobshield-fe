@@ -4,7 +4,7 @@ import { getRandomExample } from "../App";
 import { FRAUDULENT_EXAMPLES, LEGIT_EXAMPLES } from "../examples";
 import { Input } from "../types";
 
-export function RandomExampleButtons({
+export default function RandomExampleButtons({
   buttonGroupDirection,
   setValues,
 }: {

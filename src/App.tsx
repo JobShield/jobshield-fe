@@ -1,8 +1,8 @@
 import { useDisclosure } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useState } from "react";
-import { DemoForm } from "./components/DemoForm";
-import { MLResultDialog } from "./components/MLResultDialog";
+import DemoForm from "./components/DemoForm";
+import MLResultDialog from "./components/MLResultDialog";
 import { Input, TrueInput, convert } from "./types";
 
 const API_URL = "YOUR_API_URL_HERE";

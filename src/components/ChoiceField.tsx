@@ -1,7 +1,7 @@
 import { FormControl, FormLabel, Select } from "@chakra-ui/react";
 import { Field } from "formik";
 
-export function ChoiceField({
+export default function ChoiceField({
   name,
   choices,
 }: {

@@ -1,7 +1,7 @@
 import { Input as ChakraInput, FormControl, FormLabel } from "@chakra-ui/react";
 import { Field } from "formik";
 
-export function TextField({ name }: { name: string }) {
+export default function TextField({ name }: { name: string }) {
   return (
     <FormControl id={name}>
       <FormLabel>{name}</FormLabel>

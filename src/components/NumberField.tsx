@@ -6,7 +6,7 @@ import {
 } from "@chakra-ui/react";
 import { Field } from "formik";
 
-export function NumberField({ name }: { name: string }) {
+export default function NumberField({ name }: { name: string }) {
   return (
     <FormControl id={name}>
       <FormLabel>{name}</FormLabel>

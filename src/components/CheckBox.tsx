@@ -1,7 +1,7 @@
 import { Checkbox, FormControl, FormLabel } from "@chakra-ui/react";
 import { Field } from "formik";
 
-export function CheckBox({ name }: { name: string }) {
+export default function CheckBox({ name }: { name: string }) {
   return (
     <FormControl display="flex" alignItems="center">
       <FormLabel htmlFor={name} mb="0">
