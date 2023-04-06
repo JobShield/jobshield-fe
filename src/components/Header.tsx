@@ -8,11 +8,11 @@ const Header: React.FC = () => {
         <Text as="span" fontWeight="bold" mr={4}>
           Job Shield
         </Text>
-        <Link href="#faq" mr={4}>
-          FAQ
-        </Link>
         <Link href="#demo" mr={4}>
           Demo
+        </Link>
+        <Link href="#faq" mr={4}>
+          FAQ
         </Link>
       </Box>
       <Spacer />

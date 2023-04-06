@@ -44,11 +44,11 @@ const App: React.FC = () => {
       <Header />
       <Box as="main" flexGrow={1} overflow="auto" minW="full">
         <Box id="landing" minH="100vh"></Box>
-        <Box id="faq" minH="100vh">
-          <FAQ />
-        </Box>
         <Box id="demo" minH="100vh">
           <DemoForm handleSubmit={handleSubmit} />
+        </Box>
+        <Box id="faq" minH="100vh">
+          <FAQ />
         </Box>
       </Box>
 
