@@ -15,7 +15,10 @@ import {
 import axios from "axios";
 import { Form, Formik } from "formik";
 import React, { useRef, useState } from "react";
-import { CheckBox, ChoiceField, NumberField, TextField } from "./Components";
+import { CheckBox } from "./components/CheckBox";
+import { ChoiceField } from "./components/ChoiceField";
+import { NumberField } from "./components/NumberField";
+import { TextField } from "./components/TextField";
 import { FRAUDULENT_EXAMPLES, LEGIT_EXAMPLES } from "./examples";
 import { cat_column_options, convert, Input, TrueInput } from "./types";
 
