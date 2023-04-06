@@ -1,7 +1,9 @@
-import { useDisclosure } from "@chakra-ui/react";
+import { VStack, useDisclosure } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useState } from "react";
 import DemoForm from "./components/DemoForm";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 import MLResultDialog from "./components/MLResultDialog";
 import { Input, TrueInput, convert } from "./types";
 
@@ -37,7 +39,9 @@ const App: React.FC = () => {
   };
 
   return (
-    <>
+    <VStack minH="100vh" spacing={0}>
+      <Header />
+
       <DemoForm handleSubmit={handleSubmit} />
 
       <MLResultDialog
@@ -46,7 +50,8 @@ const App: React.FC = () => {
         loading={loading}
         dialogMessage={dialogMessage}
       />
-    </>
+      <Footer />
+    </VStack>
   );
 };
 
