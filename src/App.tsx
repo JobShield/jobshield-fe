@@ -2,6 +2,7 @@ import { Box, VStack, useDisclosure } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useState } from "react";
 import DemoForm from "./components/DemoForm";
+import FAQ from "./components/Faq";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import MLResultDialog from "./components/MLResultDialog";
@@ -42,11 +43,9 @@ const App: React.FC = () => {
     <VStack minH="100vh" spacing={0}>
       <Header />
       <Box as="main" flexGrow={1} overflow="auto" minW="full">
-        <Box id="landing" minH="100vh">
-          Landing
-        </Box>
+        <Box id="landing" minH="100vh"></Box>
         <Box id="faq" minH="100vh">
-          FAQ
+          <FAQ />
         </Box>
         <Box id="demo" minH="100vh">
           <DemoForm handleSubmit={handleSubmit} />
