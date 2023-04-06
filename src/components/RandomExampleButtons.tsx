@@ -15,7 +15,12 @@ export default function RandomExampleButtons({
   ) => void;
 }) {
   return (
-    <Flex direction={buttonGroupDirection} gap={4}>
+    <Flex
+      direction={buttonGroupDirection}
+      gap={4}
+      width={"90%"}
+      alignContent={"centre"}
+    >
       <Button
         colorScheme="teal"
         onClick={() =>
@@ -32,14 +37,14 @@ export default function RandomExampleButtons({
         colorScheme="red"
         onClick={() => getRandomExample(FRAUDULENT_EXAMPLES, setValues)}
       >
-        Random Fraud Example
+        Fraud Example
       </Button>
 
       <Button
         colorScheme="green"
         onClick={() => getRandomExample(LEGIT_EXAMPLES, setValues)}
       >
-        Random Legit Example
+        Legit Example
       </Button>
     </Flex>
   );

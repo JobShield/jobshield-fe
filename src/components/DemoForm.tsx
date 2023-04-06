@@ -1,11 +1,13 @@
 import {
   Button,
   Container,
-  useBreakpointValue,
+  Heading,
+  Text,
   VStack,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
-import { cat_column_options, Input } from "../types";
+import { Input, cat_column_options } from "../types";
 import CheckBox from "./CheckBox";
 import ChoiceField from "./ChoiceField";
 import NumberField from "./NumberField";
@@ -20,7 +22,7 @@ export default function DemoForm({
   const buttonGroupDirection = useBreakpointValue<"column" | "row" | undefined>(
     {
       base: "column",
-      md: "row",
+      sm: "row",
     }
   );
 
@@ -29,11 +31,18 @@ export default function DemoForm({
       {({ setValues }) => (
         <>
           <Container
-            maxW="container.lg"
+            // maxW="container.lg"
             p={{ base: 4, md: 8 }}
             mt={{ base: 8, md: 16 }}
           >
-            <VStack spacing={6}>
+            <VStack>
+              <Heading>Demo</Heading>
+              <Text width={"90%"}>
+                Test our model using one of our samples or write your own job
+                listing. Check out the FAQ below the form if you want to know
+                more about this model.
+              </Text>
+
               <RandomExampleButtons
                 buttonGroupDirection={buttonGroupDirection}
                 setValues={setValues}
@@ -43,9 +52,9 @@ export default function DemoForm({
                 <Container
                   maxW="container.md"
                   p={{ base: 4, md: 8 }}
-                  mt={{ base: 8, md: 16 }}
+                  // mt={{ base: 8, md: 16 }}
                 >
-                  <VStack spacing={4} maxW="container.lg">
+                  <VStack spacing={4} maxW="container.md">
                     <>
                       {[
                         "title",

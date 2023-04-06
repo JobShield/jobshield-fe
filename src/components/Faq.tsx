@@ -17,7 +17,6 @@ const FAQ: React.FC = () => {
           cause significant harm to individuals looking for employment
           opportunities.
         </FaqItem>
-
         <FaqItem question="What is online recruitment fraud and why does it matter?">
           Online recruitment fraud refers to scams where individuals or
           organizations create fake job advertisements, impersonate real
@@ -38,7 +37,6 @@ const FAQ: React.FC = () => {
           annotation process involved researchers carefully examining each job
           entry to determine its authenticity.
         </FaqItem>
-
         <FaqItem question="What does it mean to have a machine learning model trained on EMSCAD?">
           A machine learning model trained on EMSCAD has learned to identify
           patterns and characteristics that distinguish fraudulent job postings
@@ -48,7 +46,6 @@ const FAQ: React.FC = () => {
           automating the process of detecting online recruitment fraud and
           protecting job seekers from scams.
         </FaqItem>
-
         <FaqItem question="Why are some legit job entries marked as fraudulent and vice versa?">
           Machine learning models are not perfect and can sometimes make
           mistakes. There may be instances where a legitimate job posting has
@@ -58,7 +55,7 @@ const FAQ: React.FC = () => {
           limitations, the quality of the training data, or the complexity of
           the problem itself.
         </FaqItem>
-
+        // TODO: Fill in
         <FaqItem question="What are the precision, recall, and f1 scores of your model?">
           The precision, recall, and f1 scores are metrics used to evaluate the
           performance of a machine learning model in classification tasks such
@@ -70,7 +67,6 @@ const FAQ: React.FC = () => {
           it was trained on. For our webapp, the exact scores can be found in
           the "Model Performance" section.
         </FaqItem>
-
         <FaqItem question="How can I do what you've done? / How did you do it?">
           To create a similar webapp, you will need to follow these steps:
           <br />
