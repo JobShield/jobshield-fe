@@ -1,4 +1,4 @@
-import { VStack, useDisclosure } from "@chakra-ui/react";
+import { Box, VStack, useDisclosure } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useState } from "react";
 import DemoForm from "./components/DemoForm";
@@ -41,8 +41,17 @@ const App: React.FC = () => {
   return (
     <VStack minH="100vh" spacing={0}>
       <Header />
-
-      <DemoForm handleSubmit={handleSubmit} />
+      <Box as="main" flexGrow={1} overflow="auto" minW="full">
+        <Box id="landing" minH="100vh">
+          Landing
+        </Box>
+        <Box id="faq" minH="100vh">
+          FAQ
+        </Box>
+        <Box id="demo" minH="100vh">
+          <DemoForm handleSubmit={handleSubmit} />
+        </Box>
+      </Box>
 
       <MLResultDialog
         isOpen={isOpen}
