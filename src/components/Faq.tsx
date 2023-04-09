@@ -1,4 +1,4 @@
-import { Container, Heading, VStack } from "@chakra-ui/react";
+import { Container, Flex, Heading, VStack } from "@chakra-ui/react";
 import React from "react";
 import FaqItem from "./FaqItem";
 
@@ -54,17 +54,23 @@ const FAQ: React.FC = () => {
           limitations, the quality of the training data, or the complexity of
           the problem itself.
         </FaqItem>
-        {/* TODO: Fill in */}
         <FaqItem question="What are the precision, recall, and f1 scores of your model?">
           The precision, recall, and f1 scores are metrics used to evaluate the
           performance of a machine learning model in classification tasks such
-          as identifying fraudulent job postings. Precision measures the
-          proportion of true positives out of all positive predictions, recall
-          measures the proportion of true positives out of all actual positives,
-          and the f1 score is a harmonic mean of precision and recall. These
-          scores may vary depending on the specific model used and the dataset
-          it was trained on. For our webapp, the exact scores can be found in
-          the "Model Performance" section.
+          as identifying fraudulent job postings. For our absolute best results
+          you can check out the Ensemble model in the table. However, due to the
+          limits of free deployment services, what you're using on this site is
+          one of our far weaker models.
+          <Flex
+            width={"100%"}
+            height="70vh"
+            alignItems="center"
+            justifyContent="center"
+            bgImage={`url("./results.png")`}
+            bgPosition="center"
+            bgSize="contain"
+            bgRepeat="no-repeat"
+          ></Flex>
         </FaqItem>
         <FaqItem question="How can I do what you've done? / How did you do it?">
           On a very high level, to create a similar webapp, you will need to
