@@ -22,7 +22,7 @@ const FaqItem: React.FC<FaqItemProps> = ({ question, children }) => {
         bg={isOpen ? "orange.200" : ""}
         p={4}
         borderRadius="md"
-        _hover={{ bg: "gray.200" }}
+        _hover={{ bg: "orange.200" }}
         cursor="pointer"
         onClick={handleToggle}
         width={"90vw"}
