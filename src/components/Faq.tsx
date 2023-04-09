@@ -25,16 +25,6 @@ const FAQ: React.FC = () => {
           cause significant harm to individuals looking for employment
           opportunities.
         </FaqItem>
-        <FaqItem question="What is online recruitment fraud and why does it matter?">
-          Online recruitment fraud refers to scams where individuals or
-          organizations create fake job advertisements, impersonate real
-          companies, or otherwise deceive job seekers in an attempt to extract
-          personal information or money. These scams can lead to identity theft,
-          financial loss, and a waste of time and effort for job seekers. It
-          matters because it undermines trust in the online job market and can
-          cause significant harm to individuals looking for employment
-          opportunities.
-        </FaqItem>
         <FaqItem question="What is the EMSCAD and how was it made?">
           The EMSCAD, or Employment Scam Agean Dataset, is a collection of job
           advertisements collected by the Agean University to better identify
@@ -77,7 +67,8 @@ const FAQ: React.FC = () => {
           the "Model Performance" section.
         </FaqItem>
         <FaqItem question="How can I do what you've done? / How did you do it?">
-          To create a similar webapp, you will need to follow these steps:
+          On a very high level, to create a similar webapp, you will need to
+          follow these steps:
           <br />
           <br />
           <ol>

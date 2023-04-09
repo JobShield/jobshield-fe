@@ -19,10 +19,10 @@ const FaqItem: React.FC<FaqItemProps> = ({ question, children }) => {
       <Flex
         alignItems="center"
         justifyContent="space-between"
-        bg={isOpen ? "gray.100" : ""}
+        bg={isOpen ? "orange.200" : ""}
         p={4}
         borderRadius="md"
-        _hover={{ bg: "gray.100" }}
+        _hover={{ bg: "gray.200" }}
         cursor="pointer"
         onClick={handleToggle}
         width={"90vw"}
