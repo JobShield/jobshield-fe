@@ -9,7 +9,7 @@ import Landing from "./components/Landing";
 import MLResultDialog from "./components/MLResultDialog";
 import { Input, TrueInput, convert } from "./types";
 
-const API_URL = "http://barkbuddy.pythonanywhere.com/predict";
+const API_URL = "https://barkbuddy.pythonanywhere.com/predict";
 
 export const getRandomExample = (
   examples: Partial<Input>[],
