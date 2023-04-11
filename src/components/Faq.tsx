@@ -45,6 +45,17 @@ const FAQ: React.FC = () => {
           automating the process of detecting online recruitment fraud and
           protecting job seekers from scams.
         </FaqItem>
+        <FaqItem question="I tried some obviously wrong answers by smashing my keyboard, why can I trick it so easily?">
+          Our ML model relies on patterns and features learned from the training
+          data to make predictions. When you input random gibberish (what we
+          call noise), it falls outside the scope of what the model has seen
+          during training, and it might not be able to accurately classify such
+          inputs as fraudulent or legitimate. <br /> <br />
+          This is because the model hasn't encountered similar examples during
+          its training process, so it might not have a strong basis for making
+          correct predictions in these cases. It expects reasonable-sounding but
+          fake job scams, or reasonable-sounding but real job listings.
+        </FaqItem>
         <FaqItem question="Why are some legit job entries marked as fraudulent and vice versa?">
           Machine learning models are not perfect and can sometimes make
           mistakes. There may be instances where a legitimate job posting has
