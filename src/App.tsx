@@ -9,7 +9,7 @@ import Landing from "./components/Landing";
 import MLResultDialog from "./components/MLResultDialog";
 import { Input, TrueInput, convert } from "./types";
 
-const API_URL = "YOUR_API_URL_HERE";
+const API_URL = "http://barkbuddy.pythonanywhere.com/predict";
 
 export const getRandomExample = (
   examples: Partial<Input>[],
@@ -24,14 +24,15 @@ const App: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [loading, setLoading] = useState(false);
   const [dialogMessage, setDialogMessage] = useState("");
+  const [prediction, setPrediction] = useState<number | null>(null);
 
   const handleSubmit = async (values: Partial<Input>) => {
     setLoading(true);
     onOpen();
     const res: TrueInput = convert(values);
     try {
-      const response = await axios.post(API_URL, { data: res });
-      // TODO: Show Legit / Fraud here.
+      const response = await axios.post(API_URL, res);
+      setPrediction(response?.data?.prediction ?? null);
       setDialogMessage("Success");
     } catch (error: any) {
       setDialogMessage("Error: " + error.message);
@@ -60,6 +61,7 @@ const App: React.FC = () => {
         onClose={onClose}
         loading={loading}
         dialogMessage={dialogMessage}
+        prediction={prediction}
       />
       <Footer />
     </VStack>

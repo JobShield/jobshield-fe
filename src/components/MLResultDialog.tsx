@@ -19,6 +19,7 @@ export default function MLResultDialog({
   onClose: () => void;
   loading: boolean;
   dialogMessage: string;
+  prediction: number | null;
 }) {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
