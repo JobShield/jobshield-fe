@@ -29,11 +29,12 @@ const FAQ: React.FC = () => {
           The EMSCAD, or Employment Scam Agean Dataset, is a collection of job
           advertisements collected by the Agean University to better identify
           fraudulent job postings. It consists of both legitimate and fraudulent
-          job entries, with the latter being predominantly online recruitment
-          scams. The dataset was created by collecting job advertisements from
-          various online sources and manually annotating them as either
+          job entries.
+          <br /> <br /> The dataset was created by collecting job advertisements
+          from various online sources and manually annotating them as either
           legitimate or fraudulent. This manual annotation process involved
-          researchers carefully examining each job entry to determine its
+          researchers carefully examining each job entry, and internal job board
+          data, customer complaints, and evidence of abuse, to determine its
           authenticity.
         </FaqItem>
         <FaqItem question="What does it mean to have a machine learning model trained on EMSCAD?">
@@ -46,15 +47,21 @@ const FAQ: React.FC = () => {
           protecting job seekers from scams.
         </FaqItem>
         <FaqItem question="I tried some obviously wrong answers by smashing my keyboard, why can I trick it so easily?">
+          In short, it expects reasonable-sounding but fake job scams, or
+          reasonable-sounding but real job listings, and not what you and I may
+          immediately recognise as nonsense. <br /> <br />
           Our ML model relies on patterns and features learned from the training
-          data to make predictions. When you input random gibberish (what we
-          call noise), it falls outside the scope of what the model has seen
-          during training, and it might not be able to accurately classify such
-          inputs as fraudulent or legitimate. <br /> <br />
-          This is because the model hasn't encountered similar examples during
-          its training process, so it might not have a strong basis for making
-          correct predictions in these cases. It expects reasonable-sounding but
-          fake job scams, or reasonable-sounding but real job listings.
+          data to make predictions. When you input random gibberish, it falls
+          outside the scope of what the model has seen during training, and it
+          might not be able to accurately classify such inputs as fraudulent or
+          legitimate. This is because the model hasn't encountered similar
+          examples during its training process, so it might not have a strong
+          basis for making correct predictions in these cases.
+        </FaqItem>
+        <FaqItem question="Are your random examples even legit?">
+          Yes! They are taken from the EMSCAD database and were expertly
+          identified to be fraudulent / legitimate. Check out the other FAQ
+          question on EMSCAD to learn more.
         </FaqItem>
         <FaqItem question="Why are some legit job entries marked as fraudulent and vice versa?">
           Machine learning models are not perfect and can sometimes make
@@ -66,12 +73,16 @@ const FAQ: React.FC = () => {
           the problem itself.
         </FaqItem>
         <FaqItem question="What are the precision, recall, and f1 scores of your model?">
-          The precision, recall, and f1 scores are metrics used to evaluate the
-          performance of a machine learning model in classification tasks such
-          as identifying fraudulent job postings. For our absolute best results
-          you can check out the Ensemble model in the table. However, due to the
-          limits of free deployment services, what you're using on this site is
-          one of our far weaker models.
+          The accuracy, precision, recall, and f1 scores are metrics used to
+          evaluate the performance of a machine learning model in classification
+          tasks such as identifying fraudulent job postings. <br /> <br />
+          F1 score is a harmonic mean (a special way of combining) precision and
+          recall. Precision is the percentage of frauds in the "likely scams"
+          results, and recall is the percentage of "likely scam" results out of
+          the frauds. The higher the F1-score, the better it is. <br /> <br />
+          For our absolute best results you can check out the Ensemble model in
+          the table. However, due to the limits of free deployment services,
+          what you're using on this site is one of our far weaker models.
           <Flex
             width={"100%"}
             height="70vh"
