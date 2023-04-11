@@ -15,13 +15,13 @@ export default function MLResultDialog({
   isOpen,
   onClose,
   loading,
-  dialogMessage,
+  errorMessage,
   prediction,
 }: {
   isOpen: boolean;
   onClose: () => void;
   loading: boolean;
-  dialogMessage: string;
+  errorMessage: string | undefined;
   prediction: number | null;
 }) {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
@@ -73,7 +73,7 @@ export default function MLResultDialog({
                 ) : (
                   <>
                     <QuestionIcon boxSize="30px" color="red.500" m="4" mt="3" />
-                    Error
+                    Error: {errorMessage ?? "unknown"}
                   </>
                 )}
               </div>

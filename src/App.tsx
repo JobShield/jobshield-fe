@@ -23,7 +23,7 @@ export const getRandomExample = (
 const App: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [loading, setLoading] = useState(false);
-  const [dialogMessage, setDialogMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState<string | undefined>("");
   const [prediction, setPrediction] = useState<number | null>(null);
 
   const handleSubmit = async (values: Partial<Input>) => {
@@ -33,9 +33,9 @@ const App: React.FC = () => {
     try {
       const response = await axios.post(API_URL, res);
       setPrediction(response?.data?.prediction ?? null);
-      setDialogMessage("Success");
+      setErrorMessage("");
     } catch (error: any) {
-      setDialogMessage("Error: " + error.message);
+      setErrorMessage(error?.message);
     } finally {
       setLoading(false);
     }
@@ -60,7 +60,7 @@ const App: React.FC = () => {
         isOpen={isOpen}
         onClose={onClose}
         loading={loading}
-        dialogMessage={dialogMessage}
+        errorMessage={errorMessage}
         prediction={prediction}
       />
       <Footer />
